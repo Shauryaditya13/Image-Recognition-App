@@ -12,7 +12,7 @@ body{
     font-size: 20px;
 }
 
-#Camera{
+#camera{
     width: 360px;
     height: 300px;
     border: 2px dashed powderblue;
@@ -29,7 +29,7 @@ body{
 
 #Result{
     border:2px solid tomato;
-    height: 360px;
+    height: 300px;
     width: 360px;
 }
 
