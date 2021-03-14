@@ -7,3 +7,31 @@ Webcam.set({
 
 camera=document.getElementById("camera");
 Webcam.attach("camera");
+
+function TakeImage() {
+ Webcam.snap(function(data_url){
+ document.getElementById("Result").innerHTML="<img id='capturedimage' src='"+data_url+"'>";
+ });
+}
+console.log("ml5version",ml5.version);
+imageclassifier = ml5.imageClassifier("https://teachablemachine.withgoogle.com/models/fXNkTNPPV/model.json",modelloaded);
+
+function modelloaded() {
+    console.log("modelloaded");
+}
+
+function IdentifyImage() {
+    img=document.getElementById("capturedimage");
+    imageclassifier.classify(img,getresult);
+}
+
+function getresult(error,results) {
+if(error) {
+    console.log(error);
+}
+else{
+    console.log(results);
+    document.getElementById("Object_Name").innerHTML=results[0].label;
+    document.getElementById("Object_Accuracy").innerHTML=results[0].confidence.toFixed(3);
+}
+}
